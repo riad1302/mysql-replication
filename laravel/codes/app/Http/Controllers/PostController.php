@@ -34,4 +34,41 @@ class PostController extends Controller
         return redirect()->route('post.index')
             ->with('success','Post created successfully.');
     }
+
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $request->validate([
+            'title' => 'required',
+            'detail' => 'required',
+        ]);
+        $post = Post::find($id);
+        if ($post) {
+            $post->update($request->all());
+
+            return redirect()->route('post.index')
+                ->with('success', 'Post updated successfully');
+        }
+        return redirect()->back()
+            ->with('failed', 'Post not found');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id): RedirectResponse
+    {
+        $post = Post::find($id);
+        if ($post) {
+            $post->delete();
+
+            return redirect()->route('post.index')
+                ->with('success', 'Post deleted successfully');
+        }
+        return redirect()->back()
+            ->with('failed', 'Post not found');
+    }
 }
