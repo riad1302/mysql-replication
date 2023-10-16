@@ -1,0 +1,46 @@
+networks:
+  iuxit-net:
+    external: true
+
+services:
+
+  web:
+    image: ${COMPOSE_PROJECT_NAME}-web:${DOCKER_BUILD_MODE:-prod}
+    build:
+      context: ../
+      dockerfile: docker/web/web.Dockerfile
+      args:
+        - TIMEZONE=${APP_TIMEZONE:-Asia/Dhaka}
+        - UID=${UID}
+        - GID=${GID}
+        - SHOULD_CHOWN_TO_APP=false
+    tty: true
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      iuxit-net:
+        aliases:
+          - tatted-web
+
+  app:
+    image: ${COMPOSE_PROJECT_NAME}-app:${DOCKER_BUILD_MODE:-prod}
+    build:
+      context: ../
+      dockerfile: docker/app/app.Dockerfile
+      args:
+        - BUILD_MODE=${DOCKER_BUILD_MODE:-prod}
+        - TIMEZONE=${APP_TIMEZONE:-Asia/Dhaka}
+        - UID=${UID}
+        - GID=${GID}
+        - SHOULD_CHOWN_TO_APP=false
+        - 'EXTRA_INSTALL_APT_PACKAGES=${APP_EXTRA_INSTALL_APT_PACKAGES}'
+        - 'EXTRA_INSTALL_PHP_EXTENSIONS=${APP_EXTRA_INSTALL_PHP_EXTENSIONS}'
+    tty: true
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      iuxit-net:
+        aliases:
+          - tatted-app

@@ -1,0 +1,32 @@
+networks:
+  iuxit-net:
+    external: true
+
+services:
+
+  web:
+    env_file:
+      - .envs/web.env
+    environment:
+      - NGINX_VHOST_FASTCGI_PARAM_X_FORWARDED_PORT=${HTTP_PUBLISH_PORT}
+    restart: "no"
+    volumes:
+      - ../codes/public:/var/www/html/public
+    networks:
+      iuxit-net:
+        aliases:
+          - tatted-web
+    ports:
+      - ${HTTP_PUBLISH_PORT}:8080
+
+  app:
+    env_file:
+      - .envs/php-ini.env
+      - .envs/php-fpm.env
+    restart: "no"
+    volumes:
+      - ../codes:/var/www/html
+    networks:
+      iuxit-net:
+        aliases:
+          - tatted-app
