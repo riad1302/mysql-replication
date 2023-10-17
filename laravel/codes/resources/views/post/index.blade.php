@@ -1,4 +1,4 @@
-@extends('products.layout')
+@extends('layout')
 
 @section('content')
     <div class="row">
@@ -6,8 +6,8 @@
             <div class="pull-left">
                 <h2>Laravel 10 CRUD Example from scratch</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Post</a>
+            <div class="pull-right mt-5">
+                <a class="btn btn-success" href="{{ route('post.add') }}"> Create New Post</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-5">
         <tr>
             <th>No</th>
             <th>Title</th>
@@ -29,11 +29,11 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $post->title }}</td>
-                <td>{{ $post->detail }}</td>
+                <td>{{ $post->details }}</td>
                 <td>
                     <form action="{{ route('post.destroy',$post->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('post.show',$post->id) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('post.edit',$post->id) }}">Show</a>
 
                         <a class="btn btn-primary" href="{{ route('post.edit',$post->id) }}">Edit</a>
 

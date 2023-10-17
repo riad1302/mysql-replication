@@ -25,14 +25,18 @@ class PostController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'title' => 'required',
+            'details' => 'required',
         ]);
-
         Post::create($request->all());
 
         return redirect()->route('post.index')
             ->with('success','Post created successfully.');
+    }
+
+    public function edit($id): View
+    {
+
     }
 
 
@@ -43,7 +47,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'detail' => 'required',
+            'details' => 'required',
         ]);
         $post = Post::find($id);
         if ($post) {

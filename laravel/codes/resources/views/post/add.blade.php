@@ -30,13 +30,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
                 <div class="form-group">
                     <strong>Title:</strong>
-                    <input type="text" name="title" class="form-control mt-2" placeholder="Title">
+                    <input type="text" name="title" class="form-control mt-2" placeholder="Title" value="{{ old('title') }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
                 <div class="form-group">
                     <strong>Detail:</strong>
-                    <textarea class="form-control mt-2" style="height:150px" name="detail" placeholder="Detail"></textarea>
+                    <textarea class="form-control mt-2" style="height:150px" name="details" placeholder="Detail" value="{{ old('details') }}"></textarea>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
