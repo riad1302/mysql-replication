@@ -345,7 +345,7 @@ Output:
 ```
 
 2. CREATE NEW POST
-> URL: http://localhost:8888/post
+> URL: http://localhost:8888/post/add
 ```
 **Check MASTER Status:**
 ```
