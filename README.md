@@ -346,10 +346,10 @@ Output:
 
 2. CREATE NEW POST
 > URL: http://localhost:8888/post/add
-```
+
 **Check MASTER Status:**
-```
-docker-compose exec master sh -c 'tail -f /var/log/mysql/*.log'
+
+    docker-compose exec master sh -c 'tail -f /var/log/mysql/*.log'
 
 **Output from Master Console:**
 ```
