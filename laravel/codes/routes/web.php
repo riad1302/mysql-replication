@@ -24,6 +24,6 @@ Route::controller(PostController::class)
     Route::get('/add',  'add')->name('post.add');
     Route::post('/add',  'store')->name('post.store');
     Route::get('/edit/{id}',  'edit')->name('post.edit');
-    Route::post('/edit/{id}',  'store')->name('post.update');
+    Route::post('/edit/{id}',  'update')->name('post.update');
     Route::delete('/delete/{id}',  'destroy')->name('post.destroy');
 });
