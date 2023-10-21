@@ -1,4 +1,4 @@
-# MySQL Replication and ProxySQL
+# Laravel MySQL Replication and ProxySQL
 
 In this documentation, we will cover
 
@@ -279,7 +279,7 @@ Looks Good, All the Master and Slaves are Online and Synced up.
 Now Open a new Terminal and Try to run some query and Monitor the General Logs of Master and Slaves
 
 ## Showtime
-All our tedious configuration is done, now lets open 3 terminals 1 for master and other 2 for slaves and place them side by side so that you can monitor all of them together. Try to run some Read/Write query from your Spring Boot application or any Database Client like Mysql Workbench and Monitor the General Logs of Master and Slaves
+All our tedious configuration is done, now lets open 3 terminals 1 for master and other 2 for slaves and place them side by side so that you can monitor all of them together. Try to run some Read/Write query from your Laravel application or any Database Client like Mysql Workbench and Monitor the General Logs of Master and Slaves
 
 1. Read ALL Posts
 > URL: http://localhost:8888/post
